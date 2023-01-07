@@ -21,6 +21,7 @@ func main() {
 
 	const numJobs = 5
 	// jobs & results channel are *buffered* channels with second argument of size
+	// Buffered channels accept a limited number of values without a corresponding receiver for those values.
 	jobs := make(chan int, 5)
 	results := make(chan int, 5)
 

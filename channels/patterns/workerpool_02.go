@@ -1,5 +1,5 @@
 // source => https://gobyexample.com/worker-pools
-// example pattern showing worker pools with unbuffered channels
+// example pattern showing worker pools with unbuffered channels (default channel behavior)
 package main
 
 import (
@@ -8,7 +8,7 @@ import (
 )
 
 func worker(id int, jobs <-chan int, results chan<- int) {
-	// range on channels receives values from the channel repeatedly until it is *closed*
+	// range on channels receives values from the channel repeatedly until it is *closed*: Close(ch)
 	for j := range jobs {
 		fmt.Println("worker", id, "started  job", j)
 		time.Sleep(time.Second)
