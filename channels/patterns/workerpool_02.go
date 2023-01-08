@@ -35,6 +35,7 @@ func main() {
 	/*
 		since we're using unbuffered channels, we will need to send without blocking, so we wrap in an anonymous go routine function.
 		otherwise will deadlock
+		If removed wrapped anonymous goroutine call, L:16 would be blocked since results can't be sent to the reader on L:52
 	*/
 	go func() {
 		for j := 1; j <= numJobs; j++ {
@@ -46,6 +47,7 @@ func main() {
 		close(jobs)
 	}()
 
+	fmt.Println("made it here too")
 	for a := 1; a <= numJobs; a++ {
 		res := <-results
 		fmt.Println("main received <- ", res)
