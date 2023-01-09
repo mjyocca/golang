@@ -35,6 +35,8 @@ func main() {
 		case <-timeout:
 			fmt.Println("timeout")
 			return
+		default:
+			time.Sleep(time.Millisecond)
 		}
 	}
 }
